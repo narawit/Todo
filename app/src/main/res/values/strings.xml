@@ -1,0 +1,33 @@
+<resources>
+    <string name="deep_link_login">todo://main/login</string>
+    <string name="deep_link_home">todo://main/home</string>
+    <string name="deep_link_profile">todo://main/profile</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="age">Age</string>
+    <string name="back">Back</string>
+    <string name="name">Name</string>
+    <string name="confirmpassword">Confirm password</string>
+    <string name="password_helper">8-20 characters including a-z, A-Z and 0-9</string>
+    <string name="name_error">Please enter your name.</string>
+    <string name="age_error">Please enter your age.</string>
+    <string name="confirm_error">Password not match.</string>
+    <string name="email_error">Invalid email format.</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_profile">Profile</string>
+    <string name="description">Description</string>
+    <string name="create_at">Create at</string>
+    <string name="update_at">Update at</string>
+    <string name="update">Update</string>
+    <string name="add">Add</string>
+    <string name="done">Done</string>
+    <string name="new_task">New task</string>
+    <string name="edit_task">Edit task</string>
+    <string name="done_task">Done task</string>
+    <string name="delete">Delete</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+</resources>

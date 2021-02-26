@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    defaultConfig {
+        applicationId Config.applicationId
+        versionCode Config.versionCode
+        versionName Config.versionName
+        multiDexEnabled Config.multiDexEnabled
+    }
+
+    flavorDimensions "env"
+    productFlavors {
+        production {
+            dimension "env"
+            resValue "string", "app_name", "Todo"
+            buildConfigField 'String', 'BASE_URL', '\"https://api-nodejs-todolist.herokuapp.com\"'
+        }
+
+        develop {
+            dimension "env"
+            resValue "string", "app_name", "Todo Develop"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            buildConfigField 'String', 'BASE_URL', '\"https://api-nodejs-todolist.herokuapp.com\"'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation Deps.kotlinLib
+    implementation Deps.kotlinRuntime
+    implementation Deps.androidCore
+    implementation Deps.androidAppcompat
+    implementation Deps.material
+    implementation Deps.navigationFragment
+    implementation Deps.navigationUI
+    implementation Deps.constraintlayout
+    implementation Deps.hawk
+    implementation Deps.koin
+    implementation Deps.koinViewModel
+    implementation Deps.retrofit
+    implementation Deps.retrofitConverter
+    implementation Deps.loging
+    implementation Deps.roomRuntime
+    kapt Deps.roomCompiler
+    implementation Deps.roomExt
+    implementation Deps.multiDex
+    implementation Deps.lifecycleLiveData
+    implementation Deps.lifecycleViewModel
+    implementation Deps.swipe
+
+    //========================================== Local Unit Test ==========================================
+//    testImplementation "junit:junit:$ver.junit"
+//    testImplementation "org.mockito:mockito-core:$ver.mockito"
+//    testImplementation "androidx.arch.core:core-testing:$ver.archtest"
+//    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$ver.coroutines"
+//    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$ver.coroutines"
+//    testImplementation "androidx.test.espresso:espresso-core:$ver.espresso"
+//    testImplementation "androidx.test.espresso:espresso-contrib:$ver.espresso"
+//    testImplementation "androidx.test.espresso:espresso-intents:$ver.espresso"
+//    testImplementation "com.google.truth:truth:$ver.truth"
+//
+    //========================================== Android Unit Test ==========================================
+//    androidTestImplementation "junit:junit:$ver.junit"
+//    androidTestImplementation "org.mockito:mockito-core:$ver.mockito"
+//    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$ver.coroutines"
+//
+//
+    //========================================== AndroidX JVM Test ==========================================
+//    testImplementation "androidx.test:core:$ver.androidxcore"
+//    testImplementation "androidx.test.ext:junit-ktx:$ver.androidxjunit"
+//    testImplementation "androidx.test:rules:$ver.androidxrule"
+//
+    //========================================== AndroidX Instrumented Tests ==========================================
+//    androidTestImplementation "androidx.test:core-ktx:$ver.androidxcore"
+//    androidTestImplementation "androidx.test.ext:junit-ktx:$ver.androidxjunit"
+//    androidTestImplementation "androidx.test:rules:$ver.androidxrule"
+//    androidTestImplementation "androidx.room:room-testing:$ver.room"
+//    androidTestImplementation "androidx.arch.core:core-testing:$ver.archtest"
+//    androidTestImplementation "androidx.test.espresso:espresso-core:$ver.espresso"
+//    androidTestImplementation "androidx.test.espresso:espresso-contrib:$ver.espresso"
+//    androidTestImplementation "androidx.test.espresso:espresso-intents:$ver.espresso"
+//    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$ver.espresso"
+
+}

@@ -1,0 +1,68 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath Deps.gradleAndroid
+        classpath Deps.gradleKotlin
+        classpath Deps.gradleCheckDependency
+        classpath Deps.gradleKoin
+    }
+}
+
+apply plugin: 'koin'
+allprojects {
+    apply plugin: "name.remal.check-dependency-updates"
+
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+//./gradlew checkDependencyUpdates
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            android {
+                compileSdkVersion Config.compileSdkVersion
+                buildToolsVersion Config.buildToolsVersion
+                defaultConfig {
+                    minSdkVersion Config.minimumSdkVersion
+                    targetSdkVersion Config.targetSdkVersion
+                    testInstrumentationRunner Config.testInstrumentation
+                }
+
+                sourceSets {
+                    main {
+                        java.srcDirs += Config.sourceMain
+                    }
+                }
+
+                buildFeatures {
+                    viewBinding Config.viewBinding
+                }
+
+                compileOptions {
+                    sourceCompatibility = Config.javaVersion
+                    targetCompatibility = Config.javaVersion
+                }
+
+                kotlinOptions {
+                    jvmTarget = Config.javaVersion
+                }
+
+                buildFeatures {
+                    viewBinding Config.viewBinding
+                }
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
